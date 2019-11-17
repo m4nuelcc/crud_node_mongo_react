@@ -24,4 +24,4 @@ yarn-error.log*
 /scr/ejemplos.js
 
 /scr/config.json
-/config.json
+./config.json
