@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 
-export class Listar extends Component {
+export class Listar2 extends Component {
   // este componente lista todos los clientes de la tabla
   state = { datos: [] };
 
   componentDidMount() {
     let datosAlServer = {
-      db: "caja",
-      collection: "clientes",
-      find: { nombre: "Carlos" },
-      sort: { cp: 1 }
+      db: "test",
+      collection: "vino",
+      find: { country: "Italy" },
+      sort: { points: 1 }
     };
     let headers = {
       Accept: "application/json",
@@ -33,10 +33,9 @@ export class Listar extends Component {
   render() {
     return (
       <div>
-        {JSON.stringify(this.state.datos)}
-
-        {/* {this.state.datos.map( (c, i) => { 
-          return  <div key={i}> {c.nombres} </div> 
+        {JSON.stringify(this.state.datos)};
+        {/* {this.state.datosRecibidos.map( (c, i) => { 
+          return  <div key={i}> {c.datosRecibidos} </div> 
         })} */}
       </div>
     );

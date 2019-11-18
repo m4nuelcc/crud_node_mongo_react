@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 
-export class Listar extends Component {
+export class ListarId  extends Component {
   // este componente lista todos los clientes de la tabla
   state = { datos: [] };
 
   componentDidMount() {
     let datosAlServer = {
-      db: "caja",
-      collection: "clientes",
-      find: { nombre: "Carlos" },
-      sort: { cp: 1 }
+      db: "test",
+      collection: "vino",
+      id: "5dcaf71d775e633e9be63899"
+    
     };
     let headers = {
       Accept: "application/json",
       "Content-Type": "application/json"
     };
-    let url = "http://localhost:3000/findSort";
+    let url = "http://localhost:3000/";
     fetch(url, {
-      method: "POST",
+      method: "GET",
       headers: headers,
       body: JSON.stringify(datosAlServer)
     })
@@ -33,10 +33,9 @@ export class Listar extends Component {
   render() {
     return (
       <div>
-        {JSON.stringify(this.state.datos)}
-
-        {/* {this.state.datos.map( (c, i) => { 
-          return  <div key={i}> {c.nombres} </div> 
+        {JSON.stringify(this.state.datos)};
+        {/* {this.state.datosRecibidos.map( (c, i) => { 
+          return  <div key={i}> {c.datosRecibidos} </div> 
         })} */}
       </div>
     );
