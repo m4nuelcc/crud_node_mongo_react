@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./index.css";
-
-
 import {Listar} from "./modulos/Listar";
 import { Listar2 } from "./modulos/Listar2";
 import { ListarId } from "./modulos/ListarID";

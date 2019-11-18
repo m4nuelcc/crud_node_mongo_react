@@ -15,11 +15,11 @@ export class ListarId  extends Component {
       Accept: "application/json",
       "Content-Type": "application/json"
     };
-    let url = "http://localhost:3000/";
+    let url = "http://localhost:3000/test/vino/5dcaf71d775e633e9be63899";
     fetch(url, {
       method: "GET",
       headers: headers,
-      body: JSON.stringify(datosAlServer)
+      // body: JSON.stringify(datosAlServer)
     })
       .then(res => {
         return res.json();
