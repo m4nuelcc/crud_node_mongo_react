@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import "./index.css";
 import {Listar} from "./modulos/Listar";
 import { Listar2 } from "./modulos/Listar2";
-import { ListarId } from "./modulos/ListarID";
+import Encontrar, { ListarId} from "./modulos/Crud";
 
 
 
@@ -23,6 +23,8 @@ const rutas = (
     <Route exact path="/" component={Listar} />
     <Route path="/listar2" component={Listar2} />
     <Route path="/listarid" component={ListarId} />
+    <Route path="/encontrar" component={Encontrar} />
+    FindSort
   </BrowserRouter>
 );
 

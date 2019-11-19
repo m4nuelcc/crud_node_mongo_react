@@ -125,7 +125,7 @@ const app = express();
 const fs = require('fs');
 var mongoConf = { url: ''};
 if ( process.argv[2] == 'auto' ) {
-  mongoConf = JSON.parse( fs.readFileSync('./conf.json').toString() );
+  mongoConf = JSON.parse( fs.readFileSync('./conf.json').toString() ); //conf.json contiene la url del cluster para conectarse a la base de datos
 } else {
   mongoConf.url = process.argv[2];
 }
