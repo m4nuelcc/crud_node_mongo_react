@@ -5,7 +5,7 @@ import "./index.css";
 import {Listar} from "./modulos/Listar";
 import { Listar2 } from "./modulos/Listar2";
 import Encontrar, { ListarId, Grabardb} from "./modulos/Crud";
-
+// import {Nave21} from "./modulos/Nave21"
 
 
 
@@ -25,6 +25,8 @@ const rutas = (
     <Route path="/listarid" component={ListarId} />
     <Route path="/encontrar" component={Encontrar} />
     <Route path="/grabar" component={Grabardb} />
+    {/* <Route path="/nave21" component={Nave21} /> */}
+    
     
   </BrowserRouter>
 );
