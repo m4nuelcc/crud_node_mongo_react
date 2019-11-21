@@ -5,17 +5,22 @@ import "./index.css";
 import {Listar} from "./modulos/Listar";
 import { Listar2 } from "./modulos/Listar2";
 import Encontrar, { ListarId, Grabardb} from "./modulos/Crud";
-// import {Nave21} from "./modulos/Nave21"
+import {Nave21} from "./modulos/Nave21"
+import config from "./config.json";
+import Grupos from "./modulos/funcionesmongo"
 
-
-
-export function br(n) {
-  let ret = []
-  for (let index = 1; index <= n; index++) {
-    ret.push(<br key={index} />);    
-  }
-  return ret
-}
+//conexion a mongo mediante stich
+import {
+  Stitch,
+  RemoteMongoClient,
+  // AnonymousCredential,
+  // UserPasswordCredential
+} from "mongodb-stitch-browser-sdk";
+export const stitch = Stitch.initializeDefaultAppClient(config.appId);
+export const mongo = stitch.getServiceClient(
+  RemoteMongoClient.factory,
+  "mongodb-atlas"
+);
 
 
 const rutas = (
@@ -25,7 +30,8 @@ const rutas = (
     <Route path="/listarid" component={ListarId} />
     <Route path="/encontrar" component={Encontrar} />
     <Route path="/grabar" component={Grabardb} />
-    {/* <Route path="/nave21" component={Nave21} /> */}
+    <Route path="/nave21" component={Nave21} />  
+    <Route path="/grupo" component={Grupos} />
     
     
   </BrowserRouter>
@@ -44,12 +50,3 @@ ReactDOM.render(rutas, document.getElementById("root"));
 
 
 
-// {/* <Route path="/NuevoCliente/:id" component={NuevoCliente} />
-// <Route path="/lista" component={ListarPrendas} />
-// <Route path="/test2" component={Test2} />
-// <Route path="/test1" component={Test1} />
-// <Route path="/recepcion" component={Recepcion} />
-// <Route path="/actor/:id" component={EditarActor} />
-// <Route path="/ModificarCliente/:id" component={ModificarCliente} />
-// <Route path="/login" component={Login} /> */}
-// {/* <Route path="/test" component={Test} /> */}

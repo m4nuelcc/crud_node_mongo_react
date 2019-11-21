@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+// funcion para grabar en local una coleccion de la base de datos mongo
 export function jsonToFile(obj = {},  filename = 'archivoSinNombre' ) {
   let e = document.createEvent('MouseEvents'),
       a = document.createElement('a'),        

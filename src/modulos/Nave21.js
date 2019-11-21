@@ -82,10 +82,12 @@ export class Nave21 extends Component {
 
   componentDidMount() {   
     mongo.db('aborrar').collection('naves')
-    .findOne({ _id: new ObjectID('5dcc45d098946c46104fc291') })
+    .findOne({ _id: new ObjectID('5dcd3e677cd785f89e233d32') }) 
     .then( nave => { 
       this.setState({ nave: Object.assign( new Nave(), nave) });
-      console.log(this.state.nave.cuantoPesas())
+      console.log(this.state.nave.cuantoPesas());
+      console.log(this.state.nave);
+
     })
 
   }
