@@ -126,7 +126,7 @@ export default class Grupos extends Component {
 
   componentDidMount(preguntarDomingo){
   //  EsquemaGrupo.cacheArtistas('cajón').then( d => console.log(d) );
-   EsquemaGrupo.cacheArtistas('jorge').then( z => console.log(z) );
+   EsquemaGrupo.cacheArtistas('guitarra').then( z => console.log(z) );
   }
 
   render() {   
