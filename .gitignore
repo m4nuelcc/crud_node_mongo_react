@@ -27,3 +27,4 @@ yarn-error.log*
 /config.json
 ./config.json
 ./conf.json
+./src/config.json
