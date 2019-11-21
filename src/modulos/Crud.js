@@ -150,7 +150,7 @@ export default class Encontrar extends Component {
       fetch(url, {
         method: "GET",
         headers: headers
-        // body: JSON.stringify(datosAlServer)
+
       })
         .then(res => {
           return res.json();
@@ -173,4 +173,6 @@ export default class Encontrar extends Component {
       );
     }
   }
+  // import React, { Component } from 'react';
+  
   
