@@ -8,6 +8,7 @@ import Encontrar, { ListarId, Grabardb} from "./modulos/Crud";
 import {Nave21} from "./modulos/Nave21"
 import config from "./config.json";
 import Grupos from "./modulos/funcionesmongo"
+import {Facturas} from "./modulos/Facturas"
 
 //conexion a mongo mediante stich
 import {
@@ -32,6 +33,7 @@ const rutas = (
     <Route path="/grabar" component={Grabardb} />
     <Route path="/nave21" component={Nave21} />  
     <Route path="/grupo" component={Grupos} />
+    <Route path="/factura" component={Facturas} />
     
     
   </BrowserRouter>
