@@ -172,4 +172,6 @@ export default class Encontrar extends Component {
       );
     }
   }
+  // import React, { Component } from 'react';
+  
   
