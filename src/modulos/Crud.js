@@ -138,7 +138,7 @@ export default class Encontrar extends Component {
   
   export class Grabardb extends Component {
     state = {datos:[],
-      db: "caja",
+      db: "aborrar",
       collection: "clientes", };
 
     componentDidMount() {

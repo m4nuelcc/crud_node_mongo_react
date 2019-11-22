@@ -15,14 +15,38 @@ db.productos.find().pretty()
 db.facturas.insertOne({
   numero:1, fecha: '2019-11-21',
   productos: [
-    ObjectId("5dd6a8ef0a683b29de7b0fea"),
-    ObjectId("5dd6a8ef0a683b29de7b0fed")
+    ObjectId("5dd7ae8b1ce8bfe476f43844"),
+    ObjectId("5dd7ae8b1ce8bfe476f43845")
   ]
 })
 
-
-
 db.facturas.find().pretty()
+
+db.clientes.insertMany(
+  [
+    {
+      
+      nombre: "Pedro",
+      apellidos: "Pérez",
+      dirección: "calle de la muerte",
+      nif: "9252432"
+    },
+    {
+     
+      nombre: "Carolina",
+      apellidos: "Ortiz",
+      dirección: "calle ciega",
+      nif: "498765"
+    },
+    {
+     
+      nombre: "Lola",
+      apellidos: "López",
+      dirección: "calle despoblada",
+      nif: "498765"
+    }
+  ]
+)
 
 
 // cruce de las collecions productos y facturas
