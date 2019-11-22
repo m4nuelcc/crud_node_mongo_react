@@ -9,6 +9,7 @@ import {Nave21} from "./modulos/Nave21"
 import config from "./config.json";
 import Grupos from "./modulos/funcionesmongo"
 import {Facturas} from "./modulos/Facturas"
+import Factura2 from "./modulos/Facturabuena"
 
 //conexion a mongo mediante stich
 import {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { mongo } from "..";
 
 // funcion para grabar en local una coleccion de la base de datos mongo
 export function jsonToFile(obj = {},  filename = 'archivoSinNombre' ) {
@@ -142,6 +143,9 @@ export default class Encontrar extends Component {
       collection: "clientes", };
 
     componentDidMount() {
+      // mongo.db('borrar').collection("facturas")
+      // .aggregate([]).toArray()
+      // .then
       let headers = {
         Accept: "application/json",
         "Content-Type": "application/json"
