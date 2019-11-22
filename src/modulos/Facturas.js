@@ -58,7 +58,7 @@ export class Facturas extends Component {
 
   componentDidMount() {
     // necesitamos una factura - OK
-    // llenar un select de productos
+    // llenar un select de productos - OK
     Producto.listado().then(d => {
       this.setState({ productos: d });
     });
@@ -76,9 +76,11 @@ export class Facturas extends Component {
           onChange={e => {
             this.setState({
               productoSeleccionado: this.state.productos[e.target.value]
-              
             });
-            console.log('productoseleccionado',this.state.productoSeleccionado);
+            console.log(
+              "productoseleccionado",
+              this.state.productoSeleccionado
+            );
           }}
         >
           {this.state.productos.map((p, i) => {
@@ -151,14 +153,95 @@ export class Facturas extends Component {
       </button>
     );
   };
+  listado = () => {
+    return (
+      <div class="container">
+        <div class="text-center">
+          <h1>Factura</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Cabecera</h3>
+                <hr></hr>
+                <div class="row" style={{ backgroundColor: "green" }}>
+                  <div class="col-md-5" style={{ backgroundcolor: "white" }}>
+                    <div class="form-group">
+                      <label for="cliente" class="col-sm-2 control-label">
+                        Cliente
+                      </label>
+                      <div class="col-sm-10">
+                      {this.selectorClientes()}
+                        {/* <input
+                          class="form-control"
+                          id="cliente"
+                          placeholder="cliente"
+                          type="text"
+                        /> */}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4" style={{ backgroundcolor: "white" }}>
+                    <div class="form-group">
+                      <label for="fecha" class="col-sm-5 control-label">
+                        Fecha factura
+                      </label>
+                      <div class="col-sm-7">
+                        <input
+                          class="form-control"
+                          id="fecha"
+                          placeholder="fecha factura"
+                          type="date"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-md-3 target"
+                    style={{ backgroundcolor: "white" }}
+                  >
+                    <div class="form-group">
+                      <label for="id" class="col-sm-3 control-label">
+                        Apellido
+                      </label>
+                      <div class="col-sm-9">
+                        <input 
+                        class="form-control"
+                        id="apellidos"
+                        type="text" />
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   render() {
     return (
       <div style={{ padding: 20 }}>
         {this.selectorProductos()}
         {this.selectorClientes()}
+        {this.listado()}
 
-        <pre> {JSON.stringify(this.state, undefined, 2)} </pre>
+        <pre>
+          {" "}
+          {JSON.stringify(this.state.productoSeleccionado, undefined, 2)}{" "}
+        </pre>
+        <pre>
+          {" "}
+          {JSON.stringify(this.state.clienteSeleccionado, undefined, 2)}{" "}
+        </pre>
+        <pre> {JSON.stringify(this.state.factura, undefined, 2)} </pre>
       </div>
     );
   }
