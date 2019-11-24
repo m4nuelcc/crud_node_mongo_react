@@ -9,7 +9,7 @@ import {Nave21} from "./modulos/Nave21"
 import config from "./config.json";
 import Grupos from "./modulos/funcionesmongo"
 import {Facturas} from "./modulos/Facturas"
-import Factura2 from "./modulos/Facturabuena"
+import {Factura2} from "./modulos/Facturabuena"
 
 //conexion a mongo mediante stich
 import {
@@ -24,6 +24,22 @@ export const mongo = stitch.getServiceClient(
   "mongodb-atlas"
 );
 
+export function nbsp(n) {
+  let ret = []
+  for (let index = 1; index <= n; index++) {
+    ret.push(<span key={index}>&nbsp;</span>);    
+  }
+  return ret
+}
+
+
+export function br(n) {
+  let ret = []
+  for (let index = 1; index <= n; index++) {
+    ret.push(<br key={index} />);    
+  }
+  return ret
+}
 
 const rutas = (
   <BrowserRouter>
@@ -35,6 +51,7 @@ const rutas = (
     <Route path="/nave21" component={Nave21} />  
     <Route path="/grupo" component={Grupos} />
     <Route path="/factura" component={Facturas} />
+    <Route path="/factura2" component={Factura2} />
     
     
   </BrowserRouter>

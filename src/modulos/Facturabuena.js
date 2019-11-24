@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { mongo, jsonToFile } from '../index'
+import { mongo, jsonToFile } from '../index';
+import {br} from '../index';
 import { Link } from 'react-router-dom';
 import {ObjectID} from 'bson';
-import Grupo from './Grupo';
+
 
 const iconoBorrar = (<i className="material-icons" title="borrar producto"> delete </i>)
 const iconoGuardar = (<i className="material-icons"> save </i>)
@@ -99,7 +100,8 @@ export class Factura2 extends Component {
 
   botonSeleccionarProducto = () =>  {
     return (
-      <button onClick={this.clickBotonSeleccionarProducto}> añadir producto a la factura </button>
+      <span onClick={this.clickBotonSeleccionarProducto} > {iconoGuardar} </span>
+  
     )
     
   }
@@ -123,12 +125,14 @@ export class Factura2 extends Component {
   
   botonSeleccionarCliente = () => {
     // añade el cliente seleccionado a la factura
-    return ( <button onClick={ e => {
-      this.setState({ 
-        factura: {...this.state.factura, cliente: this.state.clienteSeleccionado} 
-      })
-    }}> seleccionar cliente </button>)
-  }
+    return (
+      <span onClick={ e => {
+        this.setState({ 
+          factura: {...this.state.factura, cliente: this.state.clienteSeleccionado} 
+        })
+      }}> {iconoGuardar} </span>
+         
+    )}
 
   inputNumeroFactura = () => {
     return ( 
@@ -181,24 +185,25 @@ export class Factura2 extends Component {
 
   renderProductosFactura = () => {
     return (
-      <div>
-        <div className="row">
+      <div classname="container">
+        <div className="form-inline row">
           <div className="col-2"> nombre </div>
           <div className="col-2 text-right"> precio </div>
           <div className="col-2 text-right"> cantidad </div>
           <div className="col-2 text-right"> total </div>
-          <div className="col-2 text-right">  </div>
-
+          <div className="col-2 text-right"> </div>
         </div>
-        {this.state.factura.productos.map(
-          (p, i) => <VerProducto 
-            key={i} 
-            {...p} 
-            i={i} 
-            borrarProductoDeLaFactura={this.borrarProductoDeLaFactura} />
-        )}
+        {this.state.factura.productos.map((p, i) => (
+          <VerProducto
+            key={i}
+            {...p}  //p contiene nombre,precio y cantidad
+            i={i}
+            borrarProductoDeLaFactura={this.borrarProductoDeLaFactura}
+          />
+        ))}
+        {console.log("esto tiene p",this.state.factura.productos)}
       </div>
-    )
+    );
   }
 
   borrarProductoDeLaFactura = (i) => {
@@ -208,13 +213,45 @@ export class Factura2 extends Component {
   }
 
   insertOne = () => {
-    mongo.db('aborrar').collection('facturas')
+    mongo.db('borrar').collection('facturas')
     .insertOne(this.state.factura)
     .then( r => {
       this.setState({ grabado: true })
       setTimeout( () => { this.setState({ grabado: false, factura: new Factura() })}, 2000)
     })
   }
+  listado = () => {
+    return (
+      <div className="container">
+        <div className="text-center">
+          <h1>Factura</h1>
+        </div>
+        {br(3)}
+        <div>
+          <form className="form-inline row">
+            <div className="col">
+              <div>{this.inputNumeroFactura()}</div>
+            </div>
+            <div className="col">
+              <div>{this.inputFechaFactura()}</div>
+            </div>
+            {br(3)}
+          </form>
+        </div>
+
+        <div className="form-inline row">
+            <div className="col">
+              <div>{this.selectorClientes()}</div>
+            </div>
+          <div className="col">
+            <div>{this.selectorProductos()}</div>
+          </div>
+        </div>
+
+        
+      </div>
+    );
+  };
 
   render() {   
     let condiciones = 
@@ -224,34 +261,31 @@ export class Factura2 extends Component {
       this.state.factura.cliente._id
 
     return (
-      <div style={{ padding: 20 }}>
+      <div style={{ padding: 50 }}>
 
-      <span hidden={!this.state.grabado}> grabado!! </span>
       
-      <div className="form-inline">
-        {this.inputNumeroFactura()}
-        {this.inputFechaFactura()}
+     {/* { <div className="form-inline">} */}
+        <span hidden={!this.state.grabado}> grabado!! </span>
         <span onClick={this.insertOne} hidden={!condiciones}> {iconoGuardar} </span>
-      </div>
+        {this.listado()}
+        {/* {this.inputNumeroFactura()} {this.inputFechaFactura()} {this.selectorClientes()} {this.selectorProductos()} */}
+        
+      {/* </div> */}
       <br />
-        {this.selectorClientes()}
+        {/* {this.selectorClientes()}
         {this.selectorProductos()}
-       
+        */}
       <hr />
-      {this.renderProductosFactura()}
+      {this.renderProductosFactura()}  
       {this.totalFactura()}
-
-       
-
-
-
+     
       {/* <pre> {JSON.stringify(this.state, undefined, 2)} </pre> */}
       </div> 
     )
   }
 }
 
-export class VerProducto extends React.Component {
+export class VerProducto extends Component {
   render() {
     let total = (this.props.precio * this.props.cantidad).toFixed(2)
     return (
