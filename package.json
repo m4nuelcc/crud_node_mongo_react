@@ -12,14 +12,14 @@
   "author": "manuelcarabiac@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
+    "body-parser": "^1.20.4",
+    "express": "^4.22.1",
     "mongodb": "^3.0.7",
     "mongodb-stitch-browser-sdk": "^4.5.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-router-dom": "^5.1.1",
-    "react-scripts": "3.1.2"
+    "react-scripts": "5.0.1"
   },
   "eslintConfig": {
     "extends": "react-app"
